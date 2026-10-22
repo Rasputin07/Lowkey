@@ -12,7 +12,7 @@ def calculate_overall_attendance(student_id):
     conn.close()
     
     if not result['held'] or result['held'] == 0:
-        return 0.0
+        return 0.0 
     
     return round((result['attended'] / result['held']) * 100, 2)
 
@@ -30,3 +30,35 @@ def calculate_assignment_completion(student_id):
         return 100.0 # No assignments due yet
         
     return round((result['sub'] / result['due']) * 100, 2)
+
+def get_subject_wise_assignments(student_id):
+    """Returns assignment completion status grouped by subject."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    # Get total and submitted counts per subject
+    cursor.execute('''
+        SELECT 
+            s.subject_name,
+            COUNT(a.id) as total_assignments,
+            SUM(CASE WHEN a.status = 'submitted' THEN 1 ELSE 0 END) as submitted
+        FROM student_assignments a
+        JOIN subjects s ON a.subject_id = s.subject_id
+        WHERE a.student_id = ?
+        GROUP BY s.subject_id
+    ''', (student_id,))
+    
+    results = cursor.fetchall()
+    conn.close()
+    
+    subject_data = []
+    for row in results:
+        completion_rate = (row['submitted'] / row['total_assignments']) * 100 if row['total_assignments'] > 0 else 100
+        subject_data.append({
+            "subject": row['subject_name'],
+            "total": row['total_assignments'],
+            "submitted": row['submitted'],
+            "completion_rate": round(completion_rate, 2)
+        })
+        
+    return subject_data
