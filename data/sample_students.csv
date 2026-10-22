@@ -1,3 +1,31 @@
 student_id,name,department,semester
-STU-1042,Aarav Singh,Computer Science,4
-STU-1017,Priya Sharma,Electronics,2
+STU-1001,Aarav Singh,Computer Science,1
+STU-1002,Priya Sharma,Computer Science,1
+STU-1003,Rohan Verma,Computer Science,3
+STU-1004,Ananya Desai,Information Technology,1
+STU-1005,Kabir Ahuja,Electronics,5
+STU-1006,Neha Gupta,Mechanical,3
+STU-1007,Arjun Patel,Civil,7
+STU-1008,Diya Reddy,Computer Science,1
+STU-1009,Aditya Kumar,Information Technology,3
+STU-1010,Sneha Joshi,Electronics,5
+STU-1011,Ishaan Mishra,Computer Science,1
+STU-1012,Kavya Nair,Mechanical,7
+STU-1013,Vikram Singh,Civil,3
+STU-1014,Riya Kapoor,Computer Science,5
+STU-1015,Rahul Yadav,Information Technology,1
+STU-1016,Meera Menon,Electronics,1
+STU-1017,Karan Malhotra,Computer Science,3
+STU-1018,Pooja Bhatt,Mechanical,5
+STU-1019,Aryan Khanna,Civil,1
+STU-1020,Zara Ali,Computer Science,7
+STU-1021,Dev Agarwal,Information Technology,5
+STU-1022,Nidhi Shah,Electronics,3
+STU-1023,Sanjay Das,Computer Science,1
+STU-1024,Simran Kaur,Mechanical,1
+STU-1025,Varun Jain,Civil,5
+STU-1026,Shreya Thakur,Computer Science,3
+STU-1027,Yash Tiwari,Information Technology,7
+STU-1028,Tara Pandey,Electronics,1
+STU-1029,Sahil Rastogi,Computer Science,5
+STU-1030,Aditi Chauhan,Mechanical,3
