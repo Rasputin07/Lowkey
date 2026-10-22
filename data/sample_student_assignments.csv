@@ -1,0 +1,6 @@
+student_id,subject_id,title,due_date,status
+STU-1042,SUB-CS101,Linked List Lab,2026-10-12,submitted
+STU-1042,SUB-CS102,SQL Joins Assignment,2026-10-16,missed
+STU-1042,SUB-MA101,Calculus Problem Set,2026-10-19,pending
+STU-1017,SUB-EC101,Circuit Simulation,2026-10-14,submitted
+STU-1017,SUB-CS101,Array Sorting Lab,2026-10-21,submitted
