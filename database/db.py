@@ -53,14 +53,7 @@ def load_mock_data(conn):
                               VALUES (?, ?, ?, ?)''', 
                            (row['student_id'], row['week'], held, attended))
 
-    print("Mock data loaded successfully.")
-
-# Run this when testing the file directly
-if __name__ == '__main__':
-    initialize_database()
-
-
-# Load Subjects
+    # Load Subjects
     with open('data/sample_subjects.csv', 'r') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -83,3 +76,9 @@ if __name__ == '__main__':
             cursor.execute('''INSERT INTO academic_results (student_id, semester, credits, grade_points) 
                               VALUES (?, ?, ?, ?)''', 
                            (row['student_id'], int(row['semester']), int(row['credits']), int(row['grade_points'])))
+
+    print("Mock data loaded successfully.")
+
+# Run this when testing the file directly
+if __name__ == '__main__':
+    initialize_database()
