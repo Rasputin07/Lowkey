@@ -62,3 +62,43 @@ def get_subject_wise_assignments(student_id):
         })
         
     return subject_data
+
+
+def calculate_cgpa(student_id):
+    """Calculates cumulative GPA based on past semester credits and grade points."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT SUM(credits * grade_points) as total_points, SUM(credits) as total_credits
+        FROM academic_results 
+        WHERE student_id = ?
+    ''', (student_id,))
+    
+    result = cursor.fetchone()
+    conn.close()
+    
+    if not result['total_credits'] or result['total_credits'] == 0:
+        return None # No academic history yet
+        
+    cgpa = result['total_points'] / result['total_credits']
+    return round(cgpa, 2)
+
+
+def calculate_overall_attendance(student_id):
+    """Returns the total attendance percentage across all weeks."""
+    conn = get_connection()
+    cursor = conn.cursor()
+    
+    cursor.execute('''
+        SELECT SUM(classes_attended) as attended, SUM(classes_held) as held 
+        FROM attendance WHERE student_id = ?
+    ''', (student_id,))
+    result = cursor.fetchone()
+    conn.close()
+    
+    if not result['held'] or result['held'] == 0:
+        return 0.0
+    
+    return round((result['attended'] / result['held']) * 100, 2)
+
